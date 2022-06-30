@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "guiver",
+    srcs = ["publish_event.go"],
+    importpath = "github.com/flakrimjusufi/grpc-with-rest/guiver",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "guiver_test",
+    srcs = ["publish_event_test.go"],
+    deps = ["@com_github_smartystreets_goconvey//convey:go_default_library"],
+)
