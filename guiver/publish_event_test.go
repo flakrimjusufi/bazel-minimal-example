@@ -1,8 +1,7 @@
 package guiver_test
 
 import (
-	eventCore "github.com/medialab-ai/guiver/api/core"
-	gc "github.com/medialab-ai/guiver/pkg/client"
+	"github.com/flakrimjusufi/bazel-minimal-example/guiver"
 	. "github.com/smartystreets/goconvey/convey"
 	"testing"
 )
@@ -16,7 +15,7 @@ const (
 
 func TestSendEvent(t *testing.T) {
 
-	eventToGuiver := &eventCore.WeaverEvent{
+	eventToGuiver := &guiver.WeaverEvent{
 		AppVersion: AppVersion,
 		AppName:    AppName,
 		Event:      Event,
@@ -31,7 +30,7 @@ func TestSendEvent(t *testing.T) {
 		AppID: AppID,
 	}
 
-	err := gc.Publish(eventToGuiver)
+	err := guiver.Publish(eventToGuiver)
 	Convey("When calling gc.Publish", t, func() {
 		Convey("err ShouldBeNil", func() {
 			So(err, ShouldBeNil)

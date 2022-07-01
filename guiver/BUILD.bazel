@@ -2,13 +2,29 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 
 go_library(
     name = "guiver",
-    srcs = ["publish_event.go"],
-    importpath = "github.com/flakrimjusufi/grpc-with-rest/guiver",
+    srcs = [
+        "backend.go",
+        "config.go",
+        "os_client.go",
+        "post_processor.go",
+        "publish_event.go",
+        "pubsub_topic.go",
+        "test_topic.go",
+    ],
+    importpath = "github.com/flakrimjusufi/bazel-minimal-example/guiver",
     visibility = ["//visibility:public"],
+    deps = [
+        "@com_google_cloud_go_pubsub//:go_default_library",
+        "@org_golang_x_net//context:go_default_library",
+    ],
 )
 
 go_test(
     name = "guiver_test",
     srcs = ["publish_event_test.go"],
-    deps = ["@com_github_smartystreets_goconvey//convey:go_default_library"],
+    tags = ["fast"],
+    deps = [
+        ":guiver",
+        "@com_github_smartystreets_goconvey//convey:go_default_library",
+    ],
 )

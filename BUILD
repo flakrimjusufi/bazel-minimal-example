@@ -1,6 +1,6 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
 
-# gazelle:prefix github.com/flakrimjusufi/grpc-with-rest
+# gazelle:prefix github.com/flakrimjusufi/bazel-minimal-example
 gazelle(name = "gazelle")
 
 gazelle(
