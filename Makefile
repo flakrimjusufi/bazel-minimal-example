@@ -16,7 +16,8 @@ bazel-setup: ### creates the setup for bazel
 bazel-update-deps: ### updates the dependencies if a dependency has changed/added
 	@echo "::bazel-update-deps";
 	@bazelisk run --platforms=@io_bazel_rules_go//go/toolchain:linux_amd64 //:gazelle -- update;
-	@bazelisk run --platforms=@io_bazel_rules_go//go/toolchain:linux_amd64 //:gazelle -- update-repos -from_file=go.mod;
+	@bazelisk run --platforms=@io_bazel_rules_go//go/toolchain:linux_amd64 //:gazelle -- update-repos -from_file=go.mod -to_macro=deps.bzl%go_dependencies
+
 .PHONY: bazel-update-deps
 
 bazel-run: ### runs the project with bazel
